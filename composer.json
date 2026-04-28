@@ -1,6 +1,5 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "version": "1.0.0",
     "name": "bluebeetlept/idempotency-middleware",
     "type": "library",
     "description": "Idempotency middleware for your Laravel API.",
@@ -59,7 +58,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-main": "1.0.x-dev"
+            "dev-main": "2.0.x-dev"
         },
         "laravel": {
             "providers": [
