@@ -7,10 +7,10 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->paths([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-        __DIR__ . '/ecs.php',
-        __DIR__ . '/rector.php',
+        __DIR__.'/src',
+        __DIR__.'/tests',
+        __DIR__.'/ecs.php',
+        __DIR__.'/rector.php',
     ]);
 
     EufaturoEcsConfig::setup($ecsConfig);

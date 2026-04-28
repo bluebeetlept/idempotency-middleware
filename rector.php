@@ -11,9 +11,9 @@ return static function (RectorConfig $rectorConfig): void {
     EufaturoRectorConfig::setup($rectorConfig);
 
     $rectorConfig->paths([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-        __DIR__ . '/ecs.php',
-        __DIR__ . '/rector.php',
+        __DIR__.'/src',
+        __DIR__.'/tests',
+        __DIR__.'/ecs.php',
+        __DIR__.'/rector.php',
     ]);
 };
