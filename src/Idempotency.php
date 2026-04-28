@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Eufaturo\IdempotencyMiddleware;
+namespace BlueBeetle\IdempotencyMiddleware;
 
 use Carbon\CarbonImmutable;
 use Closure;
@@ -92,7 +92,7 @@ readonly class Idempotency
 
     private function requestIsIdempotent(Request $request): bool
     {
-        $httpMethods = $this->config->get('eufaturo.idempotency.http_methods', ['POST']);
+        $httpMethods = $this->config->get('bluebeetle.idempotency.http_methods', ['POST']);
 
         return $request->hasHeader($this->getMainHeaderName()) && in_array($request->getMethod(), $httpMethods, true);
     }
@@ -150,16 +150,16 @@ readonly class Idempotency
 
     private function getMainHeaderName(): string
     {
-        return $this->config->get('eufaturo.idempotency.main_header_name', 'Idempotency-Key');
+        return $this->config->get('bluebeetle.idempotency.main_header_name', 'Idempotency-Key');
     }
 
     private function getRepeatedHeaderName(): string
     {
-        return $this->config->get('eufaturo.idempotency.repeated_header_name', 'Idempotent-Replayed');
+        return $this->config->get('bluebeetle.idempotency.repeated_header_name', 'Idempotent-Replayed');
     }
 
     private function getExpirationTime(): int
     {
-        return (int) $this->config->get('eufaturo.idempotency.expiration_time', 360);
+        return (int) $this->config->get('bluebeetle.idempotency.expiration_time', 360);
     }
 }

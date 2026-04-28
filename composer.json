@@ -1,7 +1,7 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
     "version": "1.0.0",
-    "name": "eufaturo/idempotency-middleware",
+    "name": "bluebeetlept/idempotency-middleware",
     "type": "library",
     "description": "Idempotency middleware for your Laravel API.",
     "keywords": [
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Eufaturo\\IdempotencyMiddleware\\": "src/"
+            "BlueBeetle\\IdempotencyMiddleware\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Eufaturo\\IdempotencyMiddleware\\Tests\\": "tests/"
+            "BlueBeetle\\IdempotencyMiddleware\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -63,7 +63,7 @@
         },
         "laravel": {
             "providers": [
-                "Eufaturo\\IdempotencyMiddleware\\IdempotencyServiceProvider"
+                "BlueBeetle\\IdempotencyMiddleware\\IdempotencyServiceProvider"
             ]
         }
     },

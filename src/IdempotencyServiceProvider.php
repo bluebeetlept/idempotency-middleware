@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Eufaturo\IdempotencyMiddleware;
+namespace BlueBeetle\IdempotencyMiddleware;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -22,7 +22,7 @@ class IdempotencyServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(
             path: realpath(__DIR__.'/../config/idempotency.php'),
-            key: 'eufaturo.idempotency',
+            key: 'bluebeetle.idempotency',
         );
     }
 
@@ -31,9 +31,9 @@ class IdempotencyServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes(
                 paths: [
-                    realpath(__DIR__.'/../config/idempotency.php') => $this->app->configPath('eufaturo/idempotency.php'),
+                    realpath(__DIR__.'/../config/idempotency.php') => $this->app->configPath('bluebeetle/idempotency.php'),
                 ],
-                groups: ['config', 'eufaturo', 'eufaturo-idempotency-config'],
+                groups: ['config', 'bluebeetle', 'bluebeetle-idempotency-config'],
             );
         }
     }

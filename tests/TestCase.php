@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Eufaturo\IdempotencyMiddleware\Tests;
+namespace BlueBeetle\IdempotencyMiddleware\Tests;
 
-use Eufaturo\IdempotencyMiddleware\IdempotencyServiceProvider;
+use BlueBeetle\IdempotencyMiddleware\IdempotencyServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
