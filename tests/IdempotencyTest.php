@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace Eufaturo\IdempotencyMiddleware\Tests;
+namespace BlueBeetle\IdempotencyMiddleware\Tests;
 
-use Eufaturo\IdempotencyMiddleware\Idempotency;
-use Eufaturo\IdempotencyMiddleware\IdempotencyException;
+use BlueBeetle\IdempotencyMiddleware\Idempotency;
+use BlueBeetle\IdempotencyMiddleware\IdempotencyException;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
