@@ -1,14 +1,10 @@
-# Idempotency Middleware for Laravel
+# Idempotency Middleware
 
-[![GitHub Tests Action Status][icon-action-tests]][url-action-tests]
-[![GitHub Code Analysis Action Status][icon-action-analysis]][url-action-analysis]
-[![Software License][icon-license]][url-license]
-[![Latest Version on Packagist][icon-packagist-version]][url-packagist]
-[![Total Downloads][icon-packagist-downloads]][url-packagist]
+[![Tests][icon-action-tests]][url-action-tests]
+[![Code Analysis][icon-action-analysis]][url-action-analysis]
+[![License][icon-license]][url-license]
 
 Simple and fully tested Laravel middleware for implementing idempotency in your API requests.
-
----
 
 ## Installation
 
@@ -22,7 +18,7 @@ The package will automatically register itself.
 
 You can optionally publish the config file with:
 
-```sh
+```bash
 php artisan vendor:publish --tag="bluebeetle-idempotency-config"
 ```
 
@@ -36,15 +32,11 @@ IDEMPOTENCY_REPEATED_HEADER="X-Idempotent-Replayed"
 IDEMPOTENCY_EXPIRATION=720 # 12 hours (define in minutes)
 ```
 
-## How to use
+## Usage
 
 To use it, just apply the middleware in your route groups or a single route.
 
-#### Example 1
-
 ```php
-<?php
-
 use BlueBeetle\IdempotencyMiddleware\Idempotency;
 
 Route::middleware(['auth:api', Idempotency::class])->group(function () {
@@ -54,11 +46,7 @@ Route::middleware(['auth:api', Idempotency::class])->group(function () {
 });
 ```
 
-#### Example 2
-
 ```php
-<?php
-
 use BlueBeetle\IdempotencyMiddleware\Idempotency;
 
 Route::post('/create-user', function () {
@@ -66,11 +54,9 @@ Route::post('/create-user', function () {
 })->middleware(Idempotency::class);
 ```
 
-### Usage with HTTP Requests
+### HTTP Requests
 
 To perform an idempotent request, provide an additional `Idempotency-Key` header through the request options where the value should be a **valid UUID v4**.
-
-#### Example
 
 ```http request
 POST /api/create-user HTTP/1.1
@@ -84,9 +70,10 @@ Idempotency-Key: 6b3fd36c-24c6-4eb2-a764-bb6c91b33e56
 }
 ```
 
-**Note:** If an idempotency key is reused with the same content body and endpoint, the original response, which is cached, will be returned, instead of continuing the normal execution and the header `Idempotent-Replayed` will be appended to the response.
+> [!NOTE]
+> If an idempotency key is reused with the same content body and endpoint, the original response, which is cached, will be returned, instead of continuing the normal execution and the header `Idempotent-Replayed` will be appended to the response.
 
-## Exceptions / Errors
+## Exceptions
 
 The middleware will throw a `BlueBeetle\IdempotencyMiddleware\IdempotencyException` in some scenarios:
 
@@ -94,38 +81,25 @@ The middleware will throw a `BlueBeetle\IdempotencyMiddleware\IdempotencyExcepti
 - If the idempotency key was used before but the content body is different
 - If the idempotency key was used before but the endpoint is different
 
----
-
 ## Testing
 
 ```bash
 composer test
 ```
 
-## Contributing
+## Credits
 
-Thank you for your interest. Here are some of the many ways to contribute.
-
-- Check out our [contributing guide](/.github/CONTRIBUTING.md)
-- Look at our [code of conduct](/.github/CODE_OF_CONDUCT.md)
+- [Blue Beetle](https://bluebeetle.pt)
+- [All Contributors](../../contributors)
 
 ## License
 
-This library is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
----
-
-## Credits
-
-Built with care by the [BlueBeetle](https://bluebeetle.pt) team.
+Licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 [url-action-tests]: https://github.com/bluebeetlept/idempotency-middleware/actions?query=workflow%3Atests
 [url-action-analysis]: https://github.com/bluebeetlept/idempotency-middleware/actions?query=workflow%3Acode-analysis
-[url-packagist]: https://packagist.org/packages/bluebeetle/idempotency-middleware
 [url-license]: https://opensource.org/licenses/MIT
 
 [icon-action-tests]: https://github.com/bluebeetlept/idempotency-middleware/actions/workflows/tests.yml/badge.svg?branch=main
 [icon-action-analysis]: https://github.com/bluebeetlept/idempotency-middleware/actions/workflows/code-analysis.yml/badge.svg?branch=main
 [icon-license]: https://img.shields.io/github/license/bluebeetlept/idempotency-middleware?label=License
-[icon-packagist-version]: https://img.shields.io/packagist/v/bluebeetle/idempotency-middleware.svg?label=Packagist
-[icon-packagist-downloads]: https://img.shields.io/packagist/dt/bluebeetle/idempotency-middleware.svg?label=Downloads
