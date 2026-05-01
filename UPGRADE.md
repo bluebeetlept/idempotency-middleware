@@ -2,13 +2,13 @@
 
 ## Upgrading from v1.x to v2.0
 
-v2.0 moves the package from the `eufaturo` organization to `bluebeetlept`. This is a namespace and configuration change only -- there are no behavioral changes.
+v2.0 moves the package from the `eufaturo` organization to `bluebeetle`. This is a namespace and configuration change only -- there are no behavioral changes.
 
 ### 1. Update Composer dependency
 
 ```diff
 - "eufaturo/idempotency-middleware": "^1.0"
-+ "bluebeetlept/idempotency-middleware": "^2.0"
++ "bluebeetle/idempotency-middleware": "^2.0"
 ```
 
 ### 2. Update namespace imports

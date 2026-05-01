@@ -13,7 +13,7 @@ Simple and fully tested Laravel middleware for implementing idempotency in your 
 ## Installation
 
 ```bash
-composer require bluebeetlept/idempotency-middleware
+composer require bluebeetle/idempotency-middleware
 ```
 
 The package will automatically register itself.
@@ -121,11 +121,11 @@ Built with care by the [BlueBeetle](https://bluebeetle.pt) team.
 
 [url-action-tests]: https://github.com/bluebeetlept/idempotency-middleware/actions?query=workflow%3Atests
 [url-action-analysis]: https://github.com/bluebeetlept/idempotency-middleware/actions?query=workflow%3Acode-analysis
-[url-packagist]: https://packagist.org/packages/bluebeetlept/idempotency-middleware
+[url-packagist]: https://packagist.org/packages/bluebeetle/idempotency-middleware
 [url-license]: https://opensource.org/licenses/MIT
 
 [icon-action-tests]: https://github.com/bluebeetlept/idempotency-middleware/actions/workflows/tests.yml/badge.svg?branch=main
 [icon-action-analysis]: https://github.com/bluebeetlept/idempotency-middleware/actions/workflows/code-analysis.yml/badge.svg?branch=main
 [icon-license]: https://img.shields.io/github/license/bluebeetlept/idempotency-middleware?label=License
-[icon-packagist-version]: https://img.shields.io/packagist/v/bluebeetlept/idempotency-middleware.svg?label=Packagist
-[icon-packagist-downloads]: https://img.shields.io/packagist/dt/bluebeetlept/idempotency-middleware.svg?label=Downloads
+[icon-packagist-version]: https://img.shields.io/packagist/v/bluebeetle/idempotency-middleware.svg?label=Packagist
+[icon-packagist-downloads]: https://img.shields.io/packagist/dt/bluebeetle/idempotency-middleware.svg?label=Downloads

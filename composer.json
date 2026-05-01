@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "bluebeetlept/idempotency-middleware",
+    "name": "bluebeetle/idempotency-middleware",
     "type": "library",
     "description": "Idempotency middleware for your Laravel API.",
     "keywords": [
