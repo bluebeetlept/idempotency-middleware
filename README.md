@@ -6,80 +6,37 @@
 
 Simple and fully tested Laravel middleware for implementing idempotency in your API requests.
 
-## Installation
+## Quick Start
 
 ```bash
 composer require bluebeetle/idempotency-middleware
 ```
 
-The package will automatically register itself.
-
-## Configuration
-
-You can optionally publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="bluebeetle-idempotency-config"
-```
-
-This will create a file at `config/bluebeetle/idempotency.php`, where you can adjust the header names, the TTL of the cached response, and the HTTP methods considered idempotent.
-
-Or if you prefer, without publishing the config file, you can define the following on your `.env` file:
-
-```dotenv
-IDEMPOTENCY_MAIN_HEADER="X-Idempotency-Key"
-IDEMPOTENCY_REPEATED_HEADER="X-Idempotent-Replayed"
-IDEMPOTENCY_EXPIRATION=720 # 12 hours (define in minutes)
-```
-
-## Usage
-
-To use it, just apply the middleware in your route groups or a single route.
+Add the middleware to your routes:
 
 ```php
 use BlueBeetle\IdempotencyMiddleware\Idempotency;
 
-Route::middleware(['auth:api', Idempotency::class])->group(function () {
-    Route::post('/create-user', function () {
-        // Create the user ...
-    });
+Route::middleware([Idempotency::class])->group(function () {
+    Route::post('/orders', [OrderController::class, 'store']);
 });
 ```
 
-```php
-use BlueBeetle\IdempotencyMiddleware\Idempotency;
+Send requests with an `Idempotency-Key` header (UUID v4):
 
-Route::post('/create-user', function () {
-    // Create the user ...
-})->middleware(Idempotency::class);
 ```
-
-### HTTP Requests
-
-To perform an idempotent request, provide an additional `Idempotency-Key` header through the request options where the value should be a **valid UUID v4**.
-
-```http request
-POST /api/create-user HTTP/1.1
-Content-Type: application/json
+POST /api/orders HTTP/1.1
 Idempotency-Key: 6b3fd36c-24c6-4eb2-a764-bb6c91b33e56
+Content-Type: application/json
 
-{
-  "name": "John Doe",
-  "email": "john.doe@example.com",
-  "password": "secret"
-}
+{"product_id": 1, "quantity": 2}
 ```
 
-> [!NOTE]
-> If an idempotency key is reused with the same content body and endpoint, the original response, which is cached, will be returned, instead of continuing the normal execution and the header `Idempotent-Replayed` will be appended to the response.
+Repeated requests with the same key return the cached response instead of processing again.
 
-## Exceptions
+## Documentation
 
-The middleware will throw a `BlueBeetle\IdempotencyMiddleware\IdempotencyException` in some scenarios:
-
-- If the idempotency key is not a valid UUID V4
-- If the idempotency key was used before but the content body is different
-- If the idempotency key was used before but the endpoint is different
+Full documentation is available at [bluebeetle.pt/open-source/docs/idempotency-middleware/v1](https://bluebeetle.pt/open-source/docs/idempotency-middleware/v1).
 
 ## Testing
 
