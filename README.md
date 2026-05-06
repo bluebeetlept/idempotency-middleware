@@ -36,7 +36,7 @@ Repeated requests with the same key return the cached response instead of proces
 
 ## Documentation
 
-Full documentation is available at [bluebeetle.pt/open-source/docs/idempotency-middleware/v1](https://bluebeetle.pt/open-source/docs/idempotency-middleware/v1).
+Full documentation is available at [bluebeetle.pt/open-source/docs/idempotency-middleware](https://bluebeetle.pt/open-source/docs/idempotency-middleware).
 
 ## Testing
 
