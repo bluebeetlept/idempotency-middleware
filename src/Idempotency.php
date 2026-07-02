@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BlueBeetle\IdempotencyMiddleware;
 
+use BlueBeetle\IdempotencyMiddleware\Contracts\IdempotencyScope;
 use Carbon\CarbonImmutable;
 use Closure;
 use Illuminate\Contracts\Cache\Repository as Cache;
@@ -23,6 +24,7 @@ readonly class Idempotency
         private Cache $cache,
         private ResponseFactory $response,
         private UuidFactory $uuidFactory,
+        private IdempotencyScope $scope,
     ) {
     }
 
@@ -72,7 +74,11 @@ readonly class Idempotency
 
     private function getCacheKey(Request $request): string
     {
-        return $this->getIdempotencyKey($request);
+        $key = $this->getIdempotencyKey($request);
+
+        $scope = $this->scope->resolve($request);
+
+        return $scope === '' ? $key : "{$scope}:{$key}";
     }
 
     private function isValidIdempotentKey(Request $request): bool

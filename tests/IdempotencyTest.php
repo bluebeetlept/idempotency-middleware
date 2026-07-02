@@ -105,7 +105,7 @@ class IdempotencyTest extends TestCase
     public function test_4(): void
     {
         $this->expectException(IdempotencyException::class);
-        $this->expectExceptionMessage('The given idempotency key is invalid. Please ensure the key is a valid UUID value.');
+        $this->expectExceptionMessageIsOrContains('The given idempotency key is invalid. Please ensure the key is a valid UUID value.');
 
         /** @var Idempotency $middleware */
         $middleware = $this->app?->make(Idempotency::class);
@@ -196,7 +196,7 @@ class IdempotencyTest extends TestCase
     public function test_7(): void
     {
         $this->expectException(IdempotencyException::class);
-        $this->expectExceptionMessage('A resource has been created with this idempotency key but with different content.');
+        $this->expectExceptionMessageIsOrContains('A resource has been created with this idempotency key but with different content.');
 
         /** @var Idempotency $middleware */
         $middleware = $this->app?->make(Idempotency::class);
@@ -229,7 +229,7 @@ class IdempotencyTest extends TestCase
     public function test_8(): void
     {
         $this->expectException(IdempotencyException::class);
-        $this->expectExceptionMessage('A resource has been created with this idempotency key but on a different endpoint.');
+        $this->expectExceptionMessageIsOrContains('A resource has been created with this idempotency key but on a different endpoint.');
 
         /** @var Idempotency $middleware */
         $middleware = $this->app?->make(Idempotency::class);
