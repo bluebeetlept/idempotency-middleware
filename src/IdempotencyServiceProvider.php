@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BlueBeetle\IdempotencyMiddleware;
 
+use BlueBeetle\IdempotencyMiddleware\Contracts\IdempotencyScope;
 use Illuminate\Support\ServiceProvider;
 
 class IdempotencyServiceProvider extends ServiceProvider
@@ -16,6 +17,10 @@ class IdempotencyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->configure();
+
+        // Default to a single global scope; applications may bind their own resolver to
+        // partition the idempotency cache per tenant/environment.
+        $this->app->bind(IdempotencyScope::class, GlobalIdempotencyScope::class);
     }
 
     private function configure(): void
